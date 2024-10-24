@@ -23,3 +23,5 @@ Vagrant.configure("2") do |config|
         echo "Configurando Tierra"
       SHELL
     end
+  end
+  
