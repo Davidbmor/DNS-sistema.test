@@ -152,3 +152,35 @@ $TTL    604800
 
 
 ```
+
+
+Reiniciar BIND9
+sudo systemctl restart bind9
+
+
+### 3. Configuración del Servidor Esclavo (Venus)
+
+Accede a la máquina Venus:
+
+vagrant ssh venus
+
+sudo nano /etc/bind/named.conf.local
+
+```plaintext
+zone "sistema.test" {
+    type slave;
+    file "/var/cache/bind/db.sistema.test";
+    masters { 192.168.57.103; };
+};
+
+zone "57.168.192.in-addr.arpa" {
+    type slave;
+    file "/var/cache/bind/db.192";
+    masters { 192.168.57.103; };
+};
+
+
+```
+
+Reiniciar BIND9
+sudo systemctl restart bind9
