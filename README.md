@@ -98,9 +98,10 @@ zone "57.168.192.in-addr.arpa" {
 ```
 
 
-Configura los archivos de zona
+Configura los archivos de zona directa 
 
 sudo cp /etc/bind/db.local /etc/bind/db.sistema.test
+
 sudo nano /etc/bind/db.sistema.test
 
 
@@ -124,4 +125,30 @@ ns2     IN      A       192.168.57.102
 
 ```
 
+Configura los archivos de zona inversa  
 
+sudo cp /etc/bind/db.127 /etc/bind/db.192
+
+sudo nano /etc/bind/db.192
+
+
+```plaintext
+$TTL    604800
+@       IN      SOA     ns1.sistema.test. root.sistema.test. (
+                         2         ; Serial
+                    604800         ; Refresh
+                     86400         ; Retry
+                   2419200         ; Expire
+                    7200 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.sistema.test.
+@       IN      NS      ns2.sistema.test.
+
+103     IN      PTR     ns1.sistema.test.
+102     IN      PTR     ns2.sistema.test.
+
+
+
+
+
+```
