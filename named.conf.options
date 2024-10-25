@@ -9,5 +9,7 @@ options {
 
     listen-on { any; };
     allow-query { localhost; 192.168.57.0/24; };
+
+    recursion yes;
 };
 
