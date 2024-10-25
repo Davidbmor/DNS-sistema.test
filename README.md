@@ -155,6 +155,7 @@ $TTL    604800
 
 
 Reiniciar BIND9
+
 sudo systemctl restart bind9
 
 
@@ -183,4 +184,71 @@ zone "57.168.192.in-addr.arpa" {
 ```
 
 Reiniciar BIND9
+
 sudo systemctl restart bind9
+
+### 4. Verificacion 
+
+Resolución de nombres y direcciones IP
+
+Registros A
+
+Comprueba los registros A en Tierra y Venus:
+
+dig @192.168.57.103 ns1.sistema.test  # Servidor maestro
+
+
+
+```plaintext
+
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.103 ns1.sistema.test
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 48107
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 4d90b55a47cd82a101000000671bf038b9eafb1449cb3f0b (good)
+;; QUESTION SECTION:
+;ns1.sistema.test.              IN      A
+
+;; ANSWER SECTION:
+ns1.sistema.test.       604800  IN      A       192.168.57.103
+
+;; Query time: 4 msec
+;; SERVER: 192.168.57.103#53(192.168.57.103)
+;; WHEN: Fri Oct 25 19:23:36 UTC 2024
+;; MSG SIZE  rcvd: 89
+
+```
+
+
+dig @192.168.57.102 ns2.sistema.test      # Servidor esclavo
+
+
+```plaintext
+
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.102 ns2.sistema.test
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31636
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 862d42615fe9338d01000000671bf0ae153eecb7a5ae34e0 (good)
+;; QUESTION SECTION:
+;ns2.sistema.test.              IN      A
+
+;; ANSWER SECTION:
+ns2.sistema.test.       604800  IN      A       192.168.57.102
+
+;; Query time: 8 msec
+;; SERVER: 192.168.57.102#53(192.168.57.102)
+;; WHEN: Fri Oct 25 19:25:34 UTC 2024
+;; MSG SIZE  rcvd: 89
+
+```
