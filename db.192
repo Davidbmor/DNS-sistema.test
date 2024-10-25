@@ -1,0 +1,16 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     ns1.sistema.test. root.sistema.test. (
+                             2         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        7200 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.sistema.test.
+@       IN      NS      ns2.sistema.test.
+
+103     IN      PTR     ns1.sistema.test.
+102     IN      PTR     ns2.sistema.test.
