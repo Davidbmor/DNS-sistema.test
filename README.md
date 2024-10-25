@@ -252,3 +252,65 @@ ns2.sistema.test.       604800  IN      A       192.168.57.102
 ;; MSG SIZE  rcvd: 89
 
 ```
+
+Resolución inversa
+
+dig @192.168.57.103 -x 192.168.57.103
+
+
+```plaintext
+
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.103 -x 192.168.57.103
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29147
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 5dbc1fcf9ccf80d601000000671bf1a2a51f47841ab44ebf (good)
+;; QUESTION SECTION:
+;103.57.168.192.in-addr.arpa.   IN      PTR
+
+;; ANSWER SECTION:
+103.57.168.192.in-addr.arpa. 604800 IN  PTR     ns1.sistema.test.
+
+;; Query time: 4 msec
+;; SERVER: 192.168.57.103#53(192.168.57.103)
+;; WHEN: Fri Oct 25 19:29:38 UTC 2024
+;; MSG SIZE  rcvd: 114
+
+```
+
+dig @192.168.57.103 -x 192.168.57.102
+
+
+```plaintext
+
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.103 -x 192.168.57.102
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39691
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: bd441c503c3e7cb701000000671bf20519473019d15d210d (good)
+;; QUESTION SECTION:
+;102.57.168.192.in-addr.arpa.   IN      PTR
+
+;; ANSWER SECTION:
+102.57.168.192.in-addr.arpa. 604800 IN  PTR     ns2.sistema.test.
+
+;; Query time: 4 msec
+;; SERVER: 192.168.57.103#53(192.168.57.103)
+;; WHEN: Fri Oct 25 19:31:17 UTC 2024
+;; MSG SIZE  rcvd: 114
+
+```
+
+
+
+
