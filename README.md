@@ -436,3 +436,57 @@ ns2.sistema.test.       604800  IN      A       192.168.57.102
 ```
 
 
+
+Servidores MX:
+
+dig @192.168.57.103 sistema.test MX
+
+```plaintext
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.103 sistema.test MX
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39114
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: fda34a5a3c2c999e01000000671bf61e383713ef86be48b3 (good)
+;; QUESTION SECTION:
+;sistema.test.                  IN      MX
+
+;; AUTHORITY SECTION:
+sistema.test.           7200    IN      SOA     ns1.sistema.test. root.sistema.test. 2 604800 86400 2419200 7200
+
+;; Query time: 4 msec
+;; SERVER: 192.168.57.103#53(192.168.57.103)
+;; WHEN: Fri Oct 25 19:48:46 UTC 2024
+;; MSG SIZE  rcvd: 114
+
+```
+
+dig @192.168.57.102 sistema.test MX
+
+```plaintext
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.102 sistema.test MX
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 18460
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: bdae9de057a48ea901000000671bf64bee8d9e96157d6a32 (good)
+;; QUESTION SECTION:
+;sistema.test.                  IN      MX
+
+;; AUTHORITY SECTION:
+sistema.test.           7200    IN      SOA     ns1.sistema.test. root.sistema.test. 2 604800 86400 2419200 7200
+
+;; Query time: 8 msec
+;; SERVER: 192.168.57.102#53(192.168.57.102)
+;; WHEN: Fri Oct 25 19:49:31 UTC 2024
+;; MSG SIZE  rcvd: 114
+
+```
