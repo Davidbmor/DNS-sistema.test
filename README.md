@@ -21,7 +21,7 @@ Se crean 2 máquinas en la red `192.168.57.0/24`:
 
 ### 1. Creación del `Vagrantfile`
 
-En el directorio del proyecto, crea el archivo `Vagrantfile` y define las 4 máquinas:
+En el directorio del proyecto, crea el archivo `Vagrantfile` y define las 2 máquinas:
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -49,3 +49,30 @@ Vagrant.configure("2") do |config|
   end
 
 end
+
+```
+
+### 2. Configuración del Servidor Maestro (Tierra)
+
+Accede a la máquina Tierra:
+
+``bash
+vagrant ssh tierra
+```
+
+
+Configura el archivo de opciones de BIND9
+
+```plaintext
+options {
+    directory "/var/cache/bind";
+    forwarders {
+        208.67.222.222;  # OpenDNS
+    };
+    dnssec-validation yes;
+    listen-on { any; };
+    allow-query { localhost; 192.168.57.0/24; };
+    recursion yes;
+
+};
+
