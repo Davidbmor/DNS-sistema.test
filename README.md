@@ -56,9 +56,7 @@ end
 
 Accede a la máquina Tierra:
 
-``bash
 vagrant ssh tierra
-```
 
 
 Configura el archivo de opciones de BIND9
@@ -75,4 +73,3 @@ options {
     recursion yes;
 
 };
-
