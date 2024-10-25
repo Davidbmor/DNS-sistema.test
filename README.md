@@ -191,7 +191,7 @@ sudo systemctl restart bind9
 
 Resolución de nombres y direcciones IP
 
-Registros A
+Registros A:
 
 Comprueba los registros A en Tierra y Venus:
 
@@ -253,7 +253,7 @@ ns2.sistema.test.       604800  IN      A       192.168.57.102
 
 ```
 
-Resolución inversa
+Resolución inversa:
 
 dig @192.168.57.103 -x 192.168.57.103
 
@@ -311,6 +311,61 @@ dig @192.168.57.103 -x 192.168.57.102
 
 ```
 
+Alias:
+
+dig @192.168.57.103 ns1.sistema.test
 
 
+
+```plaintext
+
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.103 ns1.sistema.test
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62678
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 3a50b55e6cb91d4901000000671bf2d174b32afd229b23d5 (good)
+;; QUESTION SECTION:
+;ns1.sistema.test.              IN      A
+
+;; ANSWER SECTION:
+ns1.sistema.test.       604800  IN      A       192.168.57.103
+
+;; Query time: 0 msec
+;; SERVER: 192.168.57.103#53(192.168.57.103)
+;; WHEN: Fri Oct 25 19:34:41 UTC 2024
+;; MSG SIZE  rcvd: 89
+
+```
+
+dig @192.168.57.102 ns2.sistema.test
+
+```plaintext
+
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.102 ns2.sistema.test
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 48784
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: eb98847b8289992d01000000671bf32b2836080dd5e3b97e (good)
+;; QUESTION SECTION:
+;ns2.sistema.test.              IN      A
+
+;; ANSWER SECTION:
+ns2.sistema.test.       604800  IN      A       192.168.57.102
+
+;; Query time: 4 msec
+;; SERVER: 192.168.57.102#53(192.168.57.102)
+;; WHEN: Fri Oct 25 19:36:11 UTC 2024
+;; MSG SIZE  rcvd: 89
+
+```
 
