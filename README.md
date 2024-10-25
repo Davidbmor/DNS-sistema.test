@@ -490,3 +490,35 @@ sistema.test.           7200    IN      SOA     ns1.sistema.test. root.sistema.t
 ;; MSG SIZE  rcvd: 114
 
 ```
+
+Registro AXFR
+
+dig @192.168.57.103 AXFR
+
+
+```plaintext
+
+; <<>> DiG 9.16.50-Debian <<>> @192.168.57.103 AXFR
+; (1 server found)
+;; global options: +cmd
+.                       518400  IN      NS      j.root-servers.net.
+.                       518400  IN      NS      a.root-servers.net.
+.                       518400  IN      NS      l.root-servers.net.
+.                       518400  IN      NS      f.root-servers.net.
+.                       518400  IN      NS      m.root-servers.net.
+.                       518400  IN      NS      b.root-servers.net.
+.                       518400  IN      NS      g.root-servers.net.
+.                       518400  IN      NS      d.root-servers.net.
+.                       518400  IN      NS      k.root-servers.net.
+.                       518400  IN      NS      h.root-servers.net.
+.                       518400  IN      NS      e.root-servers.net.
+.                       518400  IN      NS      c.root-servers.net.
+.                       518400  IN      NS      i.root-servers.net.
+;; Query time: 44 msec
+;; SERVER: 192.168.57.103#53(192.168.57.103)
+;; WHEN: Fri Oct 25 19:52:18 UTC 2024
+;; MSG SIZE  rcvd: 279
+
+```
+
+
