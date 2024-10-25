@@ -73,3 +73,26 @@ options {
     recursion yes;
 
 };
+
+```
+
+Configura las zonas en named.conf.local
+
+sudo nano /etc/bind/named.conf.local
+
+
+```plaintext
+zone "sistema.test" {
+    type master;
+    file "/etc/bind/db.sistema.test";
+    allow-transfer { 192.168.57.102; };  # Transferencia al esclavo
+};
+
+zone "57.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192";
+    allow-transfer { 192.168.57.102; };
+};
+
+
+```
